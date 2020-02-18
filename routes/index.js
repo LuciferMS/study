@@ -16,4 +16,9 @@ router.get('/json', async (ctx, next) => {
   }
 })
 
+router.get('/user/register', async (ctx,next) => {
+  let query = ctx.request.query;
+  console.info(query);
+})
+
 module.exports = router
