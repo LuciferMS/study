@@ -8,9 +8,14 @@ const logger = require('koa-logger')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const topic = require('./routes/topic')
+
+const connect = require('./db/connect.js').connect;
 
 // error handler
 onerror(app)
+
+connect();
 
 // middlewares
 app.use(bodyparser({
@@ -35,6 +40,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(topic.routes(), topic.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

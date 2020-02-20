@@ -12,7 +12,7 @@ const connect = () => {
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'))
     db.once('open', () => {
-        console.info('链接成功.....')
+        console.info('mongoose log : 链接成功.....')
     })
 }
 

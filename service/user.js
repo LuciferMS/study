@@ -1,5 +1,6 @@
 const userModel = require('../db/dev/user').user
 
+//顶层命名空间
 const user = {}
 
 /**
@@ -15,8 +16,10 @@ user.login = async function(ctx, next){
     const query = userModel.findOne().where('username').equals(user.username);
     await query.exec((error, result) => {
         if(error) {
+            //TODO 构建错误错误状态码
             console.error(error);
         }
+        //TODO 构建返回信息
         console.info(result);
         console.info(result.password == user.password);
     })
@@ -30,10 +33,11 @@ user.login = async function(ctx, next){
 user.register = async function(ctx, next){
     let user = ctx.request.query;
     if(!user.username) throw "username illgel!!!!"
-    const u = new userModel(user);
-    u.save((error, u) => {
-        if(error) console.error(error);
-        console.info("save user " + u.username + " successfully!!!");
+    userModel.save(user, (error, u) => {
+         //TODO 构建错误码
+         if(error) console.error(error);
+         //TODO 注册成功，跳转登陆页面
+         console.info("save user " + u.username + " successfully!!!");
     })
 }
 
