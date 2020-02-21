@@ -11,20 +11,24 @@ const user = {}
  */
 user.login = async function(ctx, next){
     let user = ctx.request.query;
-    console.info(user);
-    if(!user.username) throw "username illgel!!!";
-    const query = userModel.findOne().where('username').equals(user.username);
-    await query.exec((error, result) => {
-        if(error) {
-            //TODO 构建错误错误状态码
-            console.error(error);
-        }
-        //TODO 构建返回信息
-        console.info(result);
-        console.info(result.password == user.password);
+    let res = {}
+    if(!user.username) {
+        throw "username illgel!!!";
+        res.code = 500;
+        res.data = "exeception"
+    }
+    let u = await userModel.findOne({username: user.username}, (error, result) => {
+        if(error) console.error;
+        return result;
     })
-    console.info('login success!!');
-    ctx.body = 'login success';
+    if(u.username == user.username){
+        res.msg = "success";
+        res.user = u;
+    }else{
+        res.msg = "failed";
+    }
+    res.code = 200;
+    ctx.body = res
 }
 
 /**

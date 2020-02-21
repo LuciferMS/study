@@ -1,4 +1,5 @@
 const topic = require('../dev/topic.js').topic
+const user = require('../dev/user.js').user
 
 const connnect = require('../connect.js').connect
 connnect();
@@ -10,3 +11,9 @@ query.exec((error, topics) => {
         console.info(element)
     })
 })
+
+// user.findOne({username: 'Elliot'}, (error, result) => {
+//     return result;
+// }).then((data) => {
+//     console.info(data);
+// })
