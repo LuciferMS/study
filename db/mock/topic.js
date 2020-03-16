@@ -10,6 +10,9 @@ const math = {
     startTime: new Date(),
     endTime : new Date(),
     deadline : new Date(),
+    downNum: 4,
+    upNum: 10,
+    currentNum: 6,
 }
 
 const chinese = {
@@ -19,6 +22,9 @@ const chinese = {
     startTime: new Date(),
     endTime : new Date(),
     deadline : new Date(),
+    downNum: 3,
+    upNum: 10,
+    currentNum: 2,
 }
 
 const science = {
@@ -28,6 +34,9 @@ const science = {
     startTime: new Date(),
     endTime : new Date(),
     deadline : new Date(),
+    downNum: 4,
+    upNum: 11,
+    currentNum: 20,
 }
 
 const children = {
@@ -37,6 +46,9 @@ const children = {
     startTime: new Date(),
     endTime : new Date(),
     deadline : new Date(),
+    downNum: 4,
+    upNum: 14,
+    currentNum: 7,
 }
 
 topicModel.insertMany([math, children, science, children], (error, datas) => {

@@ -11,6 +11,9 @@ const topicSchema = new Schema({
     startTime     : {type : Date, default : Date.now},     //话题开始时间
     endTime       : {type : Date, default : Date.now},     //话题结束时间
     deadline      : {type : Date, default : Date.now},     //拼团截至时间
+    downNum       : Number,                                //人数下限
+    upNum         : Number,                                //人数上限
+    currentNum    : Number,                                //现有人数
 })
 
 

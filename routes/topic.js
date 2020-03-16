@@ -1,12 +1,9 @@
 const baseUrl = process.cwd();
 const router = require('koa-router')();
-const topicService = require(baseUrl + '/service/topic.js').topicService;
+const topicService = require(`${ baseUrl }/service/topic.js`).topicService;
+const helper = require(`${baseUrl}/routes/helper/helper.js`).helper;
+const configs = require(`${baseUrl}/routes/helper/topic.js`).topicRouters;
 
-router.prefix('/topic')
+const r = helper(configs, router);
 
-router.get('/lists', topicService.lists);
-router.post('/create', topicService.create);
-router.post('/update', topicService.update);
-router.post('/delete', topicService.delete);
-
-module.exports = router
+module.exports = r;
